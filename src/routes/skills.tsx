@@ -15,7 +15,7 @@ export const Route = createFileRoute("/skills")({
       { property: "og:description", content: "Frontend, backend, 3D, databases and tooling." },
     ],
   }),
-  component: Skills;
+  component: Skills,
 });
 
 const SKILLS = [
