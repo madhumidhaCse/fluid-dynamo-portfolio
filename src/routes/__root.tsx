@@ -84,21 +84,31 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Madhumidha S — Creative Developer Portfolio" },
+      {
+        name: "description",
+        content:
+          "Immersive dark-themed portfolio of Madhumidha S: projects, skills, articles and coding profiles.",
+      },
+      { name: "author", content: "Madhumidha S" },
+      { property: "og:title", content: "Madhumidha S — Creative Developer Portfolio" },
+      {
+        property: "og:description",
+        content: "Immersive 3D & motion-driven developer portfolio.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: appCss,
+        href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
   }),
   shellComponent: RootShell,
@@ -121,13 +131,79 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+const EASE = [0.22, 1, 0.36, 1] as const;
+
+const TRANSITIONS: Record<string, { initial: object; animate: object; exit: object }> = {
+  "/": {
+    initial: { opacity: 0, scale: 1.06, filter: "blur(14px)" },
+    animate: { opacity: 1, scale: 1, filter: "blur(0px)" },
+    exit: { opacity: 0, scale: 0.96, filter: "blur(10px)" },
+  },
+  "/hire": {
+    initial: { opacity: 0, y: 80, rotateX: 12 },
+    animate: { opacity: 1, y: 0, rotateX: 0 },
+    exit: { opacity: 0, y: -60, rotateX: -8 },
+  },
+  "/resume": {
+    initial: { opacity: 0, clipPath: "inset(0 0 100% 0)" },
+    animate: { opacity: 1, clipPath: "inset(0 0 0% 0)" },
+    exit: { opacity: 0, clipPath: "inset(100% 0 0 0)" },
+  },
+  "/projects": {
+    initial: { opacity: 0, x: 120, skewY: 3 },
+    animate: { opacity: 1, x: 0, skewY: 0 },
+    exit: { opacity: 0, x: -120, skewY: -3 },
+  },
+  "/skills": {
+    initial: { opacity: 0, scale: 0.9, rotate: -2 },
+    animate: { opacity: 1, scale: 1, rotate: 0 },
+    exit: { opacity: 0, scale: 1.08, rotate: 2 },
+  },
+  "/contact": {
+    initial: { opacity: 0, y: -70, filter: "blur(12px)" },
+    animate: { opacity: 1, y: 0, filter: "blur(0px)" },
+    exit: { opacity: 0, y: 70, filter: "blur(12px)" },
+  },
+  "/articles": {
+    initial: { opacity: 0, x: -100, filter: "blur(8px)" },
+    animate: { opacity: 1, x: 0, filter: "blur(0px)" },
+    exit: { opacity: 0, x: 100, filter: "blur(8px)" },
+  },
+  "/profiles": {
+    initial: { opacity: 0, scale: 0.82, y: 60 },
+    animate: { opacity: 1, scale: 1, y: 0 },
+    exit: { opacity: 0, scale: 0.9, y: -40 },
+  },
+};
+
+const DEFAULT_T = TRANSITIONS["/"]!;
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const t = TRANSITIONS[pathname] ?? DEFAULT_T;
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <GradientBlurs />
+      <ClientOnly>
+        <ParticlesBg />
+      </ClientOnly>
+      <Nav />
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.div
+          key={pathname}
+          initial={t.initial}
+          animate={t.animate}
+          exit={t.exit}
+          transition={{ duration: 0.6, ease: EASE }}
+          style={{ transformPerspective: 1200 }}
+        >
+          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+          <Outlet />
+        </motion.div>
+      </AnimatePresence>
     </QueryClientProvider>
   );
 }
+
