@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Instagram, Youtube, Twitter } from "lucide-react";
+import { Github, Linkedin, Instagram, Youtube, Twitter } from "./BrandIcons";
 
 const SOCIALS = [
   { label: "LinkedIn", href: "https://linkedin.com/", Icon: Linkedin },

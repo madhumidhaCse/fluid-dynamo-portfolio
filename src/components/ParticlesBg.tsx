@@ -1,30 +1,16 @@
-import { useEffect, useState } from "react";
-import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { useCallback, useMemo } from "react";
+import type { Engine } from "@tsparticles/engine";
+import Particles, { ParticlesProvider } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 
-let enginePromise: Promise<void> | null = null;
-
 export function ParticlesBg() {
-  const [ready, setReady] = useState(false);
-
-  useEffect(() => {
-    enginePromise ??= initParticlesEngine(async (engine) => {
-      await loadSlim(engine);
-    });
-    let active = true;
-    enginePromise.then(() => active && setReady(true)).catch(() => {});
-    return () => {
-      active = false;
-    };
+  const init = useCallback(async (engine: Engine) => {
+    await loadSlim(engine);
   }, []);
 
-  if (!ready) return null;
-
-  return (
-    <Particles
-      id="tsparticles"
-      className="pointer-events-none fixed inset-0 -z-10"
-      options={{
+  const options = useMemo(
+    () =>
+      ({
         fullScreen: { enable: false },
         fpsLimit: 60,
         detectRetina: true,
@@ -47,8 +33,18 @@ export function ParticlesBg() {
           opacity: { value: { min: 0.15, max: 0.6 } },
           size: { value: { min: 0.6, max: 2.4 } },
         },
-      }}
-    />
+      }) as const,
+    [],
+  );
+
+  return (
+    <ParticlesProvider init={init}>
+      <Particles
+        id="tsparticles"
+        className="pointer-events-none fixed inset-0 -z-10"
+        options={options}
+      />
+    </ParticlesProvider>
   );
 }
 

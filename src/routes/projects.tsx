@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink } from "lucide-react";
+import { Github } from "../components/BrandIcons";
 import type { MouseEvent } from "react";
 import { useRef } from "react";
 import { PageWrap, Heading } from "../components/Section";
