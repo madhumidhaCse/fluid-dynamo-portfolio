@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
 import { Github } from "../components/BrandIcons";
 import type { MouseEvent } from "react";
 import { useRef } from "react";
@@ -13,10 +12,13 @@ export const Route = createFileRoute("/projects")({
       { title: "Projects — Madhumidha S" },
       {
         name: "description",
-        content: "Selected engineering projects: web apps, tools and experiments.",
+        content:
+          "An AI mental health chatbot built with Python, NLP and CNNs, and a React movie discovery app powered by the TMDb API.",
       },
       { property: "og:title", content: "Projects — Madhumidha S" },
-      { property: "og:description", content: "Selected web apps, tools and experiments." },
+      { property: "og:description", content: "AI mental health bot and a React movie search app." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Projects,
@@ -24,34 +26,22 @@ export const Route = createFileRoute("/projects")({
 
 const PROJECTS = [
   {
-    title: "Nebula Dashboard",
-    desc: "Real-time analytics dashboard with streaming charts and role-based access.",
-    tags: ["React", "WebSocket", "Postgres"],
+    title: "Mental Health Bot",
+    desc: "An AI-driven chatbot for real-time, empathetic text and voice conversations, with sentiment analysis, emotional-state tracking and a crisis-detection module that flags high-risk language and triggers alerts.",
+    tags: ["Python", "NLP", "CNN"],
+    href: "https://github.com/madhumidhaCse",
   },
   {
-    title: "Orbit Commerce",
-    desc: "Headless storefront with instant search, cart persistence and Stripe checkout.",
-    tags: ["Next.js", "Stripe", "Redis"],
+    title: "Movie Search & Discovery App",
+    desc: "A React app integrating the TMDb API to search and display movie details in real time, with a Favourites feature that persists selections across sessions using React Hooks and LocalStorage.",
+    tags: ["React.js", "TMDb API", "React Hooks", "LocalStorage"],
+    href: "https://github.com/madhumidhaCse",
   },
   {
-    title: "Shader Playground",
-    desc: "Browser-based GLSL editor with live preview and shareable snippets.",
-    tags: ["Three.js", "GLSL", "Vite"],
-  },
-  {
-    title: "DevTrack CLI",
-    desc: "Terminal tool that tracks coding streaks across GitHub and LeetCode.",
-    tags: ["Node", "CLI", "APIs"],
-  },
-  {
-    title: "MediSense",
-    desc: "ML-assisted symptom triage app with an explainable results view.",
-    tags: ["Python", "FastAPI", "React"],
-  },
-  {
-    title: "Campus Connect",
-    desc: "Event and club platform used by 2k+ students, with realtime RSVPs.",
-    tags: ["React", "Supabase", "PWA"],
+    title: "To-Do Task Manager",
+    desc: "Built during my internship at Atlanwa Pvt Ltd — a task manager covering both the front-end interface and back-end storage, with real-time task status updates and tracking.",
+    tags: ["HTML", "CSS", "JavaScript", "MySQL"],
+    href: "https://github.com/madhumidhaCse",
   },
 ];
 
@@ -96,22 +86,13 @@ function TiltCard({ p, i }: { p: (typeof PROJECTS)[number]; i: number }) {
       </ul>
       <div className="mt-6 flex gap-4 text-sm">
         <motion.a
-          href="https://github.com/"
+          href={p.href}
           target="_blank"
           rel="noreferrer"
           whileHover={{ x: 3 }}
           className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-primary"
         >
           <Github className="size-4" /> Code
-        </motion.a>
-        <motion.a
-          href="https://example.com/"
-          target="_blank"
-          rel="noreferrer"
-          whileHover={{ x: 3 }}
-          className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-primary"
-        >
-          <ExternalLink className="size-4" /> Live
         </motion.a>
       </div>
     </motion.article>

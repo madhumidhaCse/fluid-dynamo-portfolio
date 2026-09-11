@@ -1,12 +1,15 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Instagram, Youtube, Twitter } from "./BrandIcons";
+import { Mail } from "lucide-react";
+import { Github, Linkedin } from "./BrandIcons";
 
 const SOCIALS = [
-  { label: "LinkedIn", href: "https://linkedin.com/", Icon: Linkedin },
-  { label: "GitHub", href: "https://github.com/", Icon: Github },
-  { label: "Instagram", href: "https://instagram.com/", Icon: Instagram },
-  { label: "YouTube", href: "https://youtube.com/", Icon: Youtube },
-  { label: "Twitter", href: "https://twitter.com/", Icon: Twitter },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/madhumidha-santosh-7189a4279/",
+    Icon: Linkedin,
+  },
+  { label: "GitHub", href: "https://github.com/madhumidhaCse", Icon: Github },
+  { label: "Email", href: "mailto:madhumidhacse883@gmail.com", Icon: Mail },
 ];
 
 export function SocialLinks({ className = "" }: { className?: string }) {
@@ -22,7 +25,7 @@ export function SocialLinks({ className = "" }: { className?: string }) {
         >
           <motion.a
             href={href}
-            target="_blank"
+            target={href.startsWith("mailto:") ? undefined : "_blank"}
             rel="noreferrer"
             aria-label={label}
             whileHover={{ scale: 1.18, rotate: -8, y: -4 }}

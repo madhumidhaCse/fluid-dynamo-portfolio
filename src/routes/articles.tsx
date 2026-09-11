@@ -1,47 +1,57 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Clock } from "lucide-react";
+import { BadgeCheck, Clock } from "lucide-react";
 import { PageWrap, Heading } from "../components/Section";
 
 export const Route = createFileRoute("/articles")({
   head: () => ({
     meta: [
-      { title: "Featured Articles — Madhumidha S" },
+      { title: "Certifications & Training — Madhumidha S" },
       {
         name: "description",
-        content: "Writing on frontend architecture, animation, WebGL and developer craft.",
+        content:
+          "NPTEL IIT Java certification, MERN stack training at Imarticus Learning, a web development internship and an in-plant training program.",
       },
-      { property: "og:title", content: "Featured Articles — Madhumidha S" },
-      { property: "og:description", content: "Writing on frontend, animation and WebGL." },
+      { property: "og:title", content: "Certifications & Training — Madhumidha S" },
+      {
+        property: "og:description",
+        content: "Java (NPTEL, IIT), MERN stack, internship and in-plant training.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Articles,
 });
 
-const ARTICLES = [
+const ITEMS = [
   {
-    title: "Building buttery page transitions in React",
-    date: "Aug 2026",
-    read: "7 min",
-    excerpt: "A practical guide to orchestrating exit and enter animations without layout jank.",
+    title: "Programming in Java — NPTEL, IIT",
+    date: "Jan – Apr 2024",
+    read: "Certification",
+    excerpt:
+      "A full semester course covering core Java, object-oriented design and problem solving, certified by IIT through NPTEL.",
   },
   {
-    title: "Three.js on a budget: 60fps on mid-range phones",
-    date: "Jun 2026",
-    read: "9 min",
-    excerpt: "Draw calls, DPR clamping and instancing — the levers that actually matter.",
+    title: "MERN Stack Development — Imarticus Learning",
+    date: "Jan 22 – Jan 31, 2024",
+    read: "Certification",
+    excerpt:
+      "Intensive training across MongoDB, Express, React and Node, building and connecting full-stack applications.",
   },
   {
-    title: "Designing a component API you won't regret",
-    date: "Apr 2026",
-    read: "6 min",
-    excerpt: "Composition over configuration, and how to know when a prop is a smell.",
+    title: "Web Development Intern — Atlanwa Pvt Ltd",
+    date: "Nov 2024 – Dec 2024",
+    read: "Internship",
+    excerpt:
+      "Built a To-Do task manager with HTML, CSS, JavaScript and MySQL, implementing real-time task status updates and end-to-end data storage.",
   },
   {
-    title: "From LeetCode to production thinking",
-    date: "Feb 2026",
-    read: "5 min",
-    excerpt: "What competitive programming teaches you — and what it definitely doesn't.",
+    title: "In-Plant Trainee — Codebind Technologies",
+    date: "Training program",
+    read: "Training",
+    excerpt:
+      "Project-based training in core web development, with practical exposure to HTML, CSS and JavaScript fundamentals.",
   },
 ];
 
@@ -49,16 +59,15 @@ function Articles() {
   return (
     <PageWrap>
       <Heading
-        kicker="Writing"
-        title="Featured Articles"
-        sub="Notes from the build log — lessons, deep dives and opinions."
+        kicker="Learning"
+        title="Certifications & Training"
+        sub="Courses, internships and programs that shaped how I build."
       />
 
       <div className="grid gap-5">
-        {ARTICLES.map((a, i) => (
-          <motion.a
+        {ITEMS.map((a, i) => (
+          <motion.article
             key={a.title}
-            href="#"
             initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true, margin: "-60px" }}
@@ -78,11 +87,11 @@ function Articles() {
             </div>
             <motion.span
               className="grid size-11 shrink-0 place-items-center rounded-full bg-primary/15 text-primary"
-              whileHover={{ rotate: 45, scale: 1.1 }}
+              whileHover={{ rotate: 12, scale: 1.1 }}
             >
-              <ArrowUpRight className="size-5" />
+              <BadgeCheck className="size-5" />
             </motion.span>
-          </motion.a>
+          </motion.article>
         ))}
       </div>
     </PageWrap>

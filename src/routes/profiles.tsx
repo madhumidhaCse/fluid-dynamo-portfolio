@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Code2, Terminal, Trophy, Binary } from "lucide-react";
-import { Github } from "../components/BrandIcons";
+import { Mail, Phone, MapPin } from "lucide-react";
+import { Github, Linkedin } from "../components/BrandIcons";
 import { PageWrap, Heading } from "../components/Section";
 import { SocialLinks } from "../components/SocialLinks";
 
@@ -11,30 +11,47 @@ export const Route = createFileRoute("/profiles")({
       { title: "Coding Profiles — Madhumidha S" },
       {
         name: "description",
-        content: "Find me on GitHub, LeetCode, SkillRack, HackerRank and CodeChef.",
+        content: "Find Madhumidha S on GitHub and LinkedIn, or reach out by email or phone.",
       },
       { property: "og:title", content: "Coding Profiles — Madhumidha S" },
-      { property: "og:description", content: "GitHub, LeetCode, SkillRack, HackerRank, CodeChef." },
+      { property: "og:description", content: "GitHub, LinkedIn and direct contact details." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Profiles,
 });
 
 const PROFILES = [
-  { name: "GitHub", stat: "80+ repositories", href: "https://github.com/", Icon: Github },
-  { name: "LeetCode", stat: "500+ problems solved", href: "https://leetcode.com/", Icon: Code2 },
-  { name: "SkillRack", stat: "1200+ points", href: "https://www.skillrack.com/", Icon: Terminal },
-  { name: "HackerRank", stat: "5★ Problem Solving", href: "https://www.hackerrank.com/", Icon: Trophy },
-  { name: "CodeChef", stat: "3★ competitive coder", href: "https://www.codechef.com/", Icon: Binary },
+  {
+    name: "GitHub",
+    stat: "madhumidhaCse — project source code",
+    href: "https://github.com/madhumidhaCse",
+    Icon: Github,
+  },
+  {
+    name: "LinkedIn",
+    stat: "Madhumidha Santosh — experience & updates",
+    href: "https://www.linkedin.com/in/madhumidha-santosh-7189a4279/",
+    Icon: Linkedin,
+  },
+  {
+    name: "Email",
+    stat: "madhumidhacse883@gmail.com",
+    href: "mailto:madhumidhacse883@gmail.com",
+    Icon: Mail,
+  },
+  { name: "Phone", stat: "+91 81489 95967", href: "tel:+918148995967", Icon: Phone },
+  { name: "Location", stat: "Chennai, Tamil Nadu", href: "#", Icon: MapPin },
 ];
 
 function Profiles() {
   return (
     <PageWrap>
       <Heading
-        kicker="Where I code"
+        kicker="Where to find me"
         title="Coding Profiles"
-        sub="Proof of work — practice, contests and open source."
+        sub="Proof of work and the fastest ways to reach me."
       />
 
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -42,7 +59,7 @@ function Profiles() {
           <motion.a
             key={name}
             href={href}
-            target="_blank"
+            target={href.startsWith("http") ? "_blank" : undefined}
             rel="noreferrer"
             initial={{ opacity: 0, scale: 0.7, y: 40 }}
             whileInView={{ opacity: 1, scale: 1, y: 0 }}

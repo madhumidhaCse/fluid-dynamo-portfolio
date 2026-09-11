@@ -9,24 +9,27 @@ export const Route = createFileRoute("/skills")({
       { title: "Skills — Madhumidha S" },
       {
         name: "description",
-        content: "Technical proficiency across frontend, backend, 3D, databases and tooling.",
+        content:
+          "Java, Python, React.js, JavaScript, MySQL, REST APIs, DSA and the basics of NLP and CNNs.",
       },
       { property: "og:title", content: "Skills — Madhumidha S" },
-      { property: "og:description", content: "Frontend, backend, 3D, databases and tooling." },
+      { property: "og:description", content: "React, Java, Python, MySQL, REST APIs and DSA." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Skills,
 });
 
 const SKILLS = [
-  { name: "React / TypeScript", value: 92 },
-  { name: "Framer Motion & UI Animation", value: 88 },
-  { name: "Three.js / WebGL", value: 78 },
-  { name: "Node.js & APIs", value: 84 },
+  { name: "React.js & React Hooks", value: 88 },
+  { name: "JavaScript (ES6+)", value: 85 },
+  { name: "HTML5 & CSS3 / Responsive Design", value: 90 },
+  { name: "Java", value: 82 },
   { name: "Python", value: 80 },
-  { name: "SQL & Databases", value: 82 },
-  { name: "Java / DSA", value: 86 },
-  { name: "Git, CI & Cloud", value: 75 },
+  { name: "SQL / MySQL", value: 78 },
+  { name: "REST API Integration", value: 82 },
+  { name: "Data Structures & Algorithms", value: 80 },
 ];
 
 function Counter({ to }: { to: number }) {
@@ -53,7 +56,7 @@ function Skills() {
       <Heading
         kicker="Toolkit"
         title="My Skills"
-        sub="What I reach for when building products — and how confident I am with each."
+        sub="What I build with — from interfaces and APIs down to databases."
       />
 
       <div className="grid gap-x-10 gap-y-7 sm:grid-cols-2">
@@ -85,9 +88,19 @@ function Skills() {
         ))}
       </div>
 
-      <div className="mt-16 flex flex-wrap gap-3">
-        {["Tailwind", "Next.js", "Express", "MongoDB", "PostgreSQL", "Docker", "Figma", "Linux"].map(
-          (tag, i) => (
+      <div className="mt-16">
+        <h2 className="mb-5 font-display text-lg font-bold">Also familiar with</h2>
+        <div className="flex flex-wrap gap-3">
+          {[
+            "OOPS",
+            "NLP (basics)",
+            "CNN (basics)",
+            "MERN stack",
+            "LocalStorage",
+            "TMDb API",
+            "VS Code",
+            "MySQL Workbench",
+          ].map((tag, i) => (
             <motion.span
               key={tag}
               initial={{ opacity: 0, scale: 0.6 }}
@@ -99,8 +112,8 @@ function Skills() {
             >
               {tag}
             </motion.span>
-          ),
-        )}
+          ))}
+        </div>
       </div>
     </PageWrap>
   );

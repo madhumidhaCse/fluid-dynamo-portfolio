@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Download, FileText, Eye } from "lucide-react";
 import { PageWrap, Heading } from "../components/Section";
+import resumeAsset from "../assets/resume.pdf.asset.json";
 
 export const Route = createFileRoute("/resume")({
   head: () => ({
@@ -10,15 +11,34 @@ export const Route = createFileRoute("/resume")({
       { name: "description", content: "Download the latest resume of Madhumidha S (PDF)." },
       { property: "og:title", content: "Resume — Madhumidha S" },
       { property: "og:description", content: "Download the latest resume (PDF)." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Resume,
 });
 
 const TIMELINE = [
-  { year: "2025 — now", title: "Freelance Full-Stack Developer", detail: "React, TypeScript, Node, cloud deployments." },
-  { year: "2024", title: "Software Engineering Intern", detail: "Built internal dashboards and API tooling." },
-  { year: "2022 — 2026", title: "B.E. Computer Science", detail: "Coursework in DSA, DBMS, networks and AI." },
+  {
+    year: "Nov – Dec 2024",
+    title: "Web Development Intern — Atlanwa Pvt Ltd",
+    detail: "To-Do task manager with HTML, CSS, JavaScript and MySQL; real-time status tracking.",
+  },
+  {
+    year: "2024",
+    title: "In-Plant Trainee — Codebind Technologies",
+    detail: "Project-based training in HTML, CSS and JavaScript fundamentals.",
+  },
+  {
+    year: "2022 — 2026",
+    title: "B.E. Computer Science — Velammal Engineering College",
+    detail: "CGPA 7.53 / 10. Coursework in DSA, OOPS, DBMS and AI foundations.",
+  },
+  {
+    year: "2021 — 2022",
+    title: "HSC — RMK Matriculation Hr. Sec. School",
+    detail: "85.17% · SSLC (2019–2020): 83.60%",
+  },
 ];
 
 function Resume() {
@@ -32,8 +52,8 @@ function Resume() {
 
       <div className="grid gap-8 lg:grid-cols-[1fr_1.2fr]">
         <motion.a
-          href="/resume.pdf"
-          download
+          href={resumeAsset.url}
+          download="Madhumidha_S_Resume.pdf"
           initial={{ opacity: 0, rotateY: -25, y: 40 }}
           animate={{ opacity: 1, rotateY: 0, y: 0 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
@@ -54,7 +74,7 @@ function Resume() {
               <FileText className="size-9" />
             </motion.span>
             <p className="mt-6 font-display text-2xl font-bold">Madhumidha_S_Resume.pdf</p>
-            <p className="mt-2 text-sm text-muted-foreground">Updated 2026 · 1 page · 120 KB</p>
+            <p className="mt-2 text-sm text-muted-foreground">1 page · PDF</p>
             <span className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-medium text-primary-foreground">
               <Download className="size-4" /> Download
             </span>
@@ -63,7 +83,7 @@ function Resume() {
 
         <div>
           <motion.a
-            href="/resume.pdf"
+            href={resumeAsset.url}
             target="_blank"
             rel="noreferrer"
             whileHover={{ x: 6 }}
@@ -83,7 +103,12 @@ function Resume() {
               >
                 <motion.span
                   className="absolute -left-[2.35rem] top-1.5 size-3 rounded-full bg-primary"
-                  animate={{ boxShadow: ["0 0 0 0 rgba(102,230,224,.5)", "0 0 0 10px rgba(102,230,224,0)"] }}
+                  animate={{
+                    boxShadow: [
+                      "0 0 0 0 rgba(102,230,224,.5)",
+                      "0 0 0 10px rgba(102,230,224,0)",
+                    ],
+                  }}
                   transition={{ repeat: Infinity, duration: 2.4, delay: i * 0.4 }}
                 />
                 <p className="text-xs uppercase tracking-widest text-primary">{t.year}</p>
