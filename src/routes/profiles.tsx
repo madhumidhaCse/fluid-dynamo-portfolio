@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Code2, Github, Terminal, Trophy, Binary } from "lucide-react";
+import { Code2, Terminal, Trophy, Binary } from "lucide-react";
+import { Github } from "../components/BrandIcons";
 import { PageWrap, Heading } from "../components/Section";
 import { SocialLinks } from "../components/SocialLinks";
 

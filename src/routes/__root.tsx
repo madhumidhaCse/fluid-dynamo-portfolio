@@ -133,7 +133,7 @@ function RootShell({ children }: { children: ReactNode }) {
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-const TRANSITIONS: Record<string, { initial: object; animate: object; exit: object }> = {
+const TRANSITIONS: Record<string, Record<"initial" | "animate" | "exit", TargetAndTransition>> = {
   "/": {
     initial: { opacity: 0, scale: 1.06, filter: "blur(14px)" },
     animate: { opacity: 1, scale: 1, filter: "blur(0px)" },
