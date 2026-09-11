@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, Award, Rocket, Users } from "lucide-react";
+import { ArrowRight, Sparkles, Award, Rocket, GraduationCap } from "lucide-react";
 import { Lazy3D } from "../components/Lazy3D";
 import { PageWrap } from "../components/Section";
 import { SocialLinks } from "../components/SocialLinks";
@@ -8,26 +8,28 @@ import { SocialLinks } from "../components/SocialLinks";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Madhumidha S — Creative Developer & Engineer" },
+      { title: "Madhumidha S — Full-Stack & AI Web Developer" },
       {
         name: "description",
         content:
-          "Full-stack developer crafting immersive, motion-rich web experiences with React, Three.js and modern tooling.",
+          "Final-year CSE undergraduate from Chennai building full-stack and AI-driven web apps with React, Python and REST APIs.",
       },
-      { property: "og:title", content: "Madhumidha S — Creative Developer & Engineer" },
+      { property: "og:title", content: "Madhumidha S — Full-Stack & AI Web Developer" },
       {
         property: "og:description",
-        content: "Full-stack developer crafting immersive, motion-rich web experiences.",
+        content: "React, Python and REST API developer seeking an entry-level software role.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Home,
 });
 
 const ACHIEVEMENTS = [
-  { icon: Award, value: "12+", label: "Hackathon wins & certifications" },
-  { icon: Rocket, value: "25+", label: "Projects shipped end-to-end" },
-  { icon: Users, value: "500+", label: "Coding problems solved" },
+  { icon: Rocket, value: "2", label: "AI & React projects built end to end" },
+  { icon: Award, value: "2", label: "Certifications — NPTEL Java & MERN stack" },
+  { icon: GraduationCap, value: "7.53", label: "CGPA, B.E. Computer Science (2022–2026)" },
 ];
 
 const container = {
@@ -53,7 +55,7 @@ function Home() {
             variants={item}
             className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs text-primary"
           >
-            <Sparkles className="size-3.5" /> Available for opportunities
+            <Sparkles className="size-3.5" /> Open to entry-level developer roles
           </motion.span>
 
           <motion.h1 variants={item} className="mt-6 text-5xl font-bold sm:text-7xl">
@@ -61,13 +63,13 @@ function Home() {
           </motion.h1>
 
           <motion.p variants={item} className="mt-3 font-display text-xl text-primary sm:text-2xl">
-            Full-Stack Developer · Creative Engineer
+            Full-Stack Web Developer · AI Enthusiast · Chennai
           </motion.p>
 
           <motion.p variants={item} className="mt-5 max-w-xl text-muted-foreground">
-            I design and build immersive digital products — blending clean engineering with 3D,
-            motion and interaction design. I care about performance, accessibility and the small
-            details that make an interface feel alive.
+            Final-year Computer Science and Engineering undergraduate with hands-on experience
+            building full-stack and AI-driven web applications using React, Python and REST APIs.
+            Certified in Java (NPTEL, IIT) and the MERN stack.
           </motion.p>
 
           <motion.div variants={item} className="mt-8 flex flex-wrap gap-3">
@@ -125,14 +127,16 @@ function Home() {
             className="rounded-3xl glass p-7 text-muted-foreground"
           >
             <p>
-              I&apos;m a computer science engineer who fell in love with the web. My work sits at
-              the intersection of solid backend thinking and expressive frontend craft — from
-              designing APIs and data models to sculpting shaders and micro-interactions.
+              I study Computer Science and Engineering at Velammal Engineering College, Chennai
+              (2022–2026). I completed a web development internship at Atlanwa Pvt Ltd and an
+              in-plant training program at Codebind Technologies, delivering real-time applications
+              from the interface down to the database.
             </p>
             <p className="mt-4">
-              Recently I&apos;ve been focused on React, TypeScript, real-time systems and WebGL. When
-              I&apos;m not building, I&apos;m solving algorithm problems, writing about what I learn,
-              or mentoring juniors getting into tech.
+              I work mostly with React.js, React Hooks and REST APIs on the front end, and Java,
+              Python, MySQL and the basics of NLP and CNNs behind the scenes. I&apos;m a quick,
+              independent learner with strong problem-solving skills built through consistent
+              practice in data structures and algorithms.
             </p>
           </motion.div>
 
