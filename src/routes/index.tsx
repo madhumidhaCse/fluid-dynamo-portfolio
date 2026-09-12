@@ -112,7 +112,7 @@ function Home() {
           />
           <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-border bg-card shadow-2xl">
             <img
-              src={portraitAsset.url}
+              src={portraitUrl}
               alt="Madhumidha S"
               width={413}
               height={529}

@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Download, FileText, Eye } from "lucide-react";
 import { PageWrap, Heading } from "../components/Section";
-import resumeAsset from "../assets/resume.pdf.asset.json";
+import resumeUrl from "../assets/Madhumidha_S_Resume.pdf";
 
 export const Route = createFileRoute("/resume")({
   head: () => ({
