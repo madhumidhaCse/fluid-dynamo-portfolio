@@ -88,7 +88,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Immersive dark-themed portfolio of Madhumidha S: projects, skills, articles and coding profiles.",
+          "Immersive dark-themed portfolio of Madhumidha S: projects, skills and coding profiles.",
       },
       { name: "author", content: "Madhumidha S" },
       { property: "og:title", content: "Madhumidha S — Creative Developer Portfolio" },
@@ -163,11 +163,6 @@ const TRANSITIONS: Record<string, Record<"initial" | "animate" | "exit", TargetA
     initial: { opacity: 0, y: -70, filter: "blur(12px)" },
     animate: { opacity: 1, y: 0, filter: "blur(0px)" },
     exit: { opacity: 0, y: 70, filter: "blur(12px)" },
-  },
-  "/articles": {
-    initial: { opacity: 0, x: -100, filter: "blur(8px)" },
-    animate: { opacity: 1, x: 0, filter: "blur(0px)" },
-    exit: { opacity: 0, x: 100, filter: "blur(8px)" },
   },
   "/profiles": {
     initial: { opacity: 0, scale: 0.82, y: 60 },

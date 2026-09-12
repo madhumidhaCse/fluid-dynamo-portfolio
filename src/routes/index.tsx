@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Award, Rocket, GraduationCap } from "lucide-react";
-import { Lazy3D } from "../components/Lazy3D";
 import { PageWrap } from "../components/Section";
 import { SocialLinks } from "../components/SocialLinks";
+import portraitAsset from "../assets/madhumidha-portrait.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -99,12 +99,34 @@ function Home() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, scale: 0.88, rotate: 2 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="relative h-[320px] w-full sm:h-[440px]"
+          className="relative mx-auto w-full max-w-md"
         >
-          <Lazy3D variant="hero" className="absolute inset-0" />
+          <motion.div
+            aria-hidden
+            className="absolute -inset-3 rounded-3xl border border-primary/30"
+            animate={{ rotate: [1, -1, 1], scale: [1, 1.015, 1] }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-border bg-card shadow-2xl">
+            <img
+              src={portraitAsset.url}
+              alt="Madhumidha S"
+              width={413}
+              height={529}
+              fetchPriority="high"
+              className="h-full w-full object-cover object-top"
+            />
+            <div aria-hidden className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-background/60 to-transparent" />
+          </div>
+          <motion.div
+            aria-hidden
+            className="absolute -bottom-5 -right-5 size-24 rounded-full border border-primary/40 bg-primary/10 backdrop-blur-md"
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          />
         </motion.div>
       </section>
 
