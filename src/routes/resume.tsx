@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Download, FileText, Eye } from "lucide-react";
 import { PageWrap, Heading } from "../components/Section";
-import resumeAsset from "../assets/resume.pdf.asset.json";
+import resumeUrl from "../assets/Madhumidha_S_Resume.pdf";
 
 export const Route = createFileRoute("/resume")({
   head: () => ({
@@ -52,7 +52,7 @@ function Resume() {
 
       <div className="grid gap-8 lg:grid-cols-[1fr_1.2fr]">
         <motion.a
-          href={resumeAsset.url}
+          href={resumeUrl}
           download="Madhumidha_S_Resume.pdf"
           initial={{ opacity: 0, rotateY: -25, y: 40 }}
           animate={{ opacity: 1, rotateY: 0, y: 0 }}
@@ -83,7 +83,7 @@ function Resume() {
 
         <div>
           <motion.a
-            href={resumeAsset.url}
+            href={resumeUrl}
             target="_blank"
             rel="noreferrer"
             whileHover={{ x: 6 }}

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Award, Rocket, GraduationCap } from "lucide-react";
 import { PageWrap } from "../components/Section";
 import { SocialLinks } from "../components/SocialLinks";
-import portraitAsset from "../assets/madhumidha-portrait.jpg.asset.json";
+import portraitUrl from "../assets/madhumidha-portrait.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -112,7 +112,7 @@ function Home() {
           />
           <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-border bg-card shadow-2xl">
             <img
-              src={portraitAsset.url}
+              src={portraitUrl}
               alt="Madhumidha S"
               width={413}
               height={529}
