@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Award, Rocket, GraduationCap } from "lucide-react";
 import { PageWrap } from "../components/Section";
 import { SocialLinks } from "../components/SocialLinks";
-import portraitAsset from "../assets/madhumidha-portrait.jpg.asset.json";
+import portraitUrl from "../assets/madhumidha-portrait.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
