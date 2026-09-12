@@ -12,7 +12,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Final-year CSE undergraduate from Chennai building full-stack and AI-driven web apps with React, Python and REST APIs.",
+          "B.E. CSE graduate from Chennai building full-stack and AI-driven web apps with React, Python and REST APIs.",
       },
       { property: "og:title", content: "Madhumidha S — Full-Stack & AI Web Developer" },
       {
@@ -67,9 +67,9 @@ function Home() {
           </motion.p>
 
           <motion.p variants={item} className="mt-5 max-w-xl text-muted-foreground">
-            Final-year Computer Science and Engineering undergraduate with hands-on experience
-            building full-stack and AI-driven web applications using React, Python and REST APIs.
-            Certified in Java (NPTEL, IIT) and the MERN stack.
+            B.E. Computer Science and Engineering graduate with hands-on experience building
+            full-stack and AI-driven web applications using React, Python and REST APIs. Certified
+            in Java (NPTEL, IIT) and the MERN stack.
           </motion.p>
 
           <motion.div variants={item} className="mt-8 flex flex-wrap gap-3">
@@ -127,10 +127,10 @@ function Home() {
             className="rounded-3xl glass p-7 text-muted-foreground"
           >
             <p>
-              I study Computer Science and Engineering at Velammal Engineering College, Chennai
-              (2022–2026). I completed a web development internship at Atlanwa Pvt Ltd and an
-              in-plant training program at Codebind Technologies, delivering real-time applications
-              from the interface down to the database.
+              I graduated with a B.E. in Computer Science and Engineering from Velammal Engineering
+              College, Chennai (2022–2026). I completed a web development internship at Atlanwa Pvt
+              Ltd and an in-plant training program at Codebind Technologies, delivering real-time
+              applications from the interface down to the database.
             </p>
             <p className="mt-4">
               I work mostly with React.js, React Hooks and REST APIs on the front end, and Java,
