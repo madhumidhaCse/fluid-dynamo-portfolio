@@ -80,7 +80,7 @@ function Hire() {
             </Link>
 
             <motion.a
-              href="mailto:hello@example.com"
+              href="mailto:madhumidhacse883@gmail.com"
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.45 }}
