@@ -52,8 +52,8 @@ function Contact() {
               transition={{ delay: i * 0.09, type: "spring", stiffness: 240, damping: 18 }}
             >
               <motion.div
-                whileHover={href ? { y: -8, scale: 1.04 } : undefined}
-                whileTap={href ? { scale: 0.97 } : undefined}
+                whileHover={{ y: -8, scale: 1.04 }}
+                whileTap={{ scale: 0.97 }}
                 className="group relative overflow-hidden rounded-3xl glass p-7 hover:glow-strong"
               >
                 <span
