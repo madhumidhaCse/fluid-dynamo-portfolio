@@ -1,8 +1,13 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Mail, Zap } from "lucide-react";
+import { Mail, Phone, MapPin, Zap } from "lucide-react";
 import { PageWrap } from "../components/Section";
 import { Lazy3D } from "../components/Lazy3D";
+import { SocialLinks } from "../components/SocialLinks";
+
+const EMAIL = "madhumidhacse883@gmail.com";
+const PHONE = "+91 81489 95967";
+const PHONE_TEL = "tel:+918148995967";
 
 export const Route = createFileRoute("/hire")({
   head: () => ({
@@ -10,13 +15,15 @@ export const Route = createFileRoute("/hire")({
       { title: "Hire Me — Madhumidha S" },
       {
         name: "description",
-        content: "Let's build something exceptional together. Available for roles and freelance work.",
+        content: "Reach Madhumidha S directly by email or phone for roles and freelance work.",
       },
       { property: "og:title", content: "Hire Me — Madhumidha S" },
       {
         property: "og:description",
         content: "Available for full-time roles and freelance product work.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Hire,
@@ -54,33 +61,25 @@ function Hire() {
             transition={{ delay: 0.2, duration: 0.7 }}
             className="mx-auto mt-6 max-w-xl text-muted-foreground"
           >
-            I&apos;m open to full-time roles, internships and freelance collaborations. Fast replies,
-            honest timelines, and work I&apos;m proud to put my name on.
+            I&apos;m open to full-time roles, internships and freelance collaborations. Reach me
+            directly — fast replies, honest timelines.
           </motion.p>
 
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <Link to="/contact">
-              <motion.span
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.35, type: "spring", stiffness: 220, damping: 18 }}
-                whileHover={{ scale: 1.08, filter: "blur(0px)" }}
-                whileTap={{ scale: 0.94 }}
-                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-primary px-9 py-4 text-lg font-semibold text-primary-foreground glow-strong"
-              >
-                <motion.span
-                  aria-hidden
-                  className="absolute inset-0 -z-10 bg-accent"
-                  initial={{ x: "-110%" }}
-                  whileHover={{ x: 0 }}
-                  transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                />
-                <Zap className="size-5" /> Hire me
-              </motion.span>
-            </Link>
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <motion.a
+              href={`mailto:${EMAIL}`}
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35, type: "spring", stiffness: 220, damping: 18 }}
+              whileHover={{ scale: 1.06 }}
+              whileTap={{ scale: 0.94 }}
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-lg font-semibold text-primary-foreground glow-strong"
+            >
+              <Mail className="size-5" /> {EMAIL}
+            </motion.a>
 
             <motion.a
-              href="mailto:madhumidhacse883@gmail.com"
+              href={PHONE_TEL}
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.45 }}
@@ -88,17 +87,40 @@ function Hire() {
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center gap-2 rounded-full glass px-8 py-4 text-lg font-medium hover:glow"
             >
-              <Mail className="size-5" /> Contact
+              <Phone className="size-5" /> {PHONE}
             </motion.a>
           </div>
 
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.55 }}
+            className="mt-6 flex items-center justify-center gap-2 text-sm text-muted-foreground"
+          >
+            <MapPin className="size-4" /> Chennai, Tamil Nadu — open to remote
+          </motion.p>
+
           <motion.div
             aria-hidden
-            className="mx-auto mt-16 h-px w-2/3 bg-gradient-to-r from-transparent via-primary to-transparent"
+            className="mx-auto mt-10 h-px w-2/3 bg-gradient-to-r from-transparent via-primary to-transparent"
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ delay: 0.6, duration: 1 }}
           />
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7 }}
+            className="mt-10"
+          >
+            <p className="mb-4 flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+              <Zap className="size-4 text-primary" /> Find me online
+            </p>
+            <div className="flex justify-center">
+              <SocialLinks />
+            </div>
+          </motion.div>
         </div>
       </div>
     </PageWrap>
