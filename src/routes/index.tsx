@@ -63,7 +63,7 @@ function Home() {
           </motion.h1>
 
           <motion.p variants={item} className="mt-3 font-display text-xl text-primary sm:text-2xl">
-            Full-Stack Web Developer · AI Enthusiast · Chennai
+            Full-Stack Web Developer · Chennai
           </motion.p>
 
           <motion.p variants={item} className="mt-5 max-w-xl text-muted-foreground">

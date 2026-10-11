@@ -88,7 +88,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Immersive dark-themed portfolio of Madhumidha S: projects, skills and coding profiles.",
+          "Portfolio of Madhumidha S: full-stack projects, skills and coding profiles.",
       },
       { name: "author", content: "Madhumidha S" },
       { property: "og:title", content: "Madhumidha S — Creative Developer Portfolio" },
@@ -171,7 +171,11 @@ const TRANSITIONS: Record<string, Record<"initial" | "animate" | "exit", TargetA
   },
 };
 
-const DEFAULT_T = TRANSITIONS["/"]!;
+const DEFAULT_T = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  exit: { opacity: 0 },
+};
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
