@@ -34,7 +34,7 @@ const PROJECTS = [
     tags: ["Python", "NLP", "CNN"],
     href: "https://github.com/madhumidhaCse",
     image: mentalHealthImage,
-    imageAlt: "Abstract conversational waveforms representing the Mental Health Bot",
+     imageAlt: "Concept image of a mental wellbeing chatbot with conversations and mood tracking on a laptop",
   },
   {
     title: "Movie Search & Discovery App",
@@ -42,7 +42,7 @@ const PROJECTS = [
     tags: ["React.js", "TMDb API", "React Hooks", "LocalStorage"],
     href: "https://github.com/madhumidhaCse",
     image: movieDiscoveryImage,
-    imageAlt: "Cinematic search interface representing the Movie Search and Discovery App",
+     imageAlt: "Concept image of a movie discovery app with search, film posters and favourites on a laptop",
   },
   {
     title: "To-Do Task Manager",
@@ -50,7 +50,7 @@ const PROJECTS = [
     tags: ["HTML", "CSS", "JavaScript", "MySQL"],
     href: "https://github.com/madhumidhaCse",
     image: taskManagerImage,
-    imageAlt: "Floating task panels representing the To-Do Task Manager",
+     imageAlt: "Concept image of a task manager with task lists, checkboxes and progress tracking on a laptop",
   },
 ];
 
@@ -131,7 +131,7 @@ function Projects() {
         <Heading
           kicker="Selected work"
           title="Projects"
-          sub="Things I've designed, built and shipped. Hover a card to tilt it in 3D."
+          sub="Things I've designed, built and shipped."
         />
       </div>
 

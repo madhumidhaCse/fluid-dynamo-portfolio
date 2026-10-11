@@ -1,9 +1,14 @@
-import { useCallback, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import type { Engine } from "@tsparticles/engine";
 import Particles, { ParticlesProvider } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 
 export function ParticlesBg() {
+  const [palette, setPalette] = useState<string[]>([]);
+  useEffect(() => {
+    const styles = getComputedStyle(document.documentElement);
+    setPalette(["--particle-primary", "--particle-accent", "--particle-neutral"].map((token) => styles.getPropertyValue(token).trim()));
+  }, []);
   const init = useCallback(async (engine: Engine) => {
     await loadSlim(engine);
   }, []);
@@ -27,15 +32,17 @@ export function ParticlesBg() {
         },
         particles: {
           number: { value: 70, density: { enable: true, width: 1200, height: 900 } },
-          color: { value: ["#66e6e0", "#a884ff", "#ffffff"] },
-          links: { enable: true, color: "#7de3e0", distance: 130, opacity: 0.18, width: 1 },
+          color: { value: palette },
+          links: { enable: true, color: palette[0], distance: 130, opacity: 0.08, width: 1 },
           move: { enable: true, speed: 0.7, outModes: { default: "out" } },
-          opacity: { value: { min: 0.15, max: 0.6 } },
+          opacity: { value: { min: 0.08, max: 0.25 } },
           size: { value: { min: 0.6, max: 2.4 } },
         },
       }) as const,
-    [],
+    [palette],
   );
+
+  if (palette.length === 0) return null;
 
   return (
     <ParticlesProvider init={init}>

@@ -7,6 +7,7 @@ import {
   useRouterState,
   HeadContent,
   Scripts,
+  type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { AnimatePresence, motion, type TargetAndTransition } from "framer-motion";
 import { useEffect, type ReactNode } from "react";
@@ -41,7 +42,7 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {
@@ -88,7 +89,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Immersive dark-themed portfolio of Madhumidha S: projects, skills and coding profiles.",
+          "Portfolio of Madhumidha S: full-stack projects, skills and coding profiles.",
       },
       { name: "author", content: "Madhumidha S" },
       { property: "og:title", content: "Madhumidha S — Creative Developer Portfolio" },
@@ -171,7 +172,11 @@ const TRANSITIONS: Record<string, Record<"initial" | "animate" | "exit", TargetA
   },
 };
 
-const DEFAULT_T = TRANSITIONS["/"]!;
+const DEFAULT_T = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  exit: { opacity: 0 },
+};
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
