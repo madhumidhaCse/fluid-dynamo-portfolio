@@ -5,7 +5,7 @@ import { Github, Linkedin } from "./BrandIcons";
 const SOCIALS = [
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/madhumidha-santosh-7189a4279/",
+    href: "https://www.linkedin.com/in/madhumidha-santhosham-7189a4279/",
     Icon: Linkedin,
   },
   { label: "GitHub", href: "https://github.com/madhumidhaCse", Icon: Github },
