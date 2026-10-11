@@ -58,7 +58,7 @@ function Home() {
             <Sparkles className="size-3.5" /> Open to entry-level developer roles
           </motion.span>
 
-          <motion.h1 variants={item} className="mt-6 text-5xl font-bold sm:text-7xl">
+          <motion.h1 variants={item} className="mt-6 text-4xl font-bold min-[400px]:text-5xl sm:text-7xl">
             Hi, I&apos;m <span className="text-gradient animate-shimmer">Madhumidha</span>
           </motion.h1>
 
@@ -121,12 +121,6 @@ function Home() {
             />
             <div aria-hidden className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-background/60 to-transparent" />
           </div>
-          <motion.div
-            aria-hidden
-            className="absolute -bottom-5 -right-5 size-24 rounded-full border border-primary/40 bg-primary/10 backdrop-blur-md"
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          />
         </motion.div>
       </section>
 
