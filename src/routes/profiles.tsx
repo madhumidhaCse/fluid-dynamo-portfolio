@@ -32,7 +32,7 @@ const PROFILES = [
   {
     name: "LinkedIn",
     stat: "Madhumidha Santosh — experience & updates",
-    href: "https://www.linkedin.com/in/madhumidha-santosh-7189a4279/",
+    href: "https://www.linkedin.com/in/madhumidha-santhosham-7189a4279/",
     Icon: Linkedin,
   },
   {
