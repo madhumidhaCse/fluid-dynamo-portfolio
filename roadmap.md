@@ -1,4 +1,7 @@
 # Portfolio updates
+- [ ] Refine the home page and project descriptions for clearer first impressions.
+- [ ] Refresh project illustrations while keeping them concept art, not fake screenshots.
+- [ ] Improve and verify home and projects layouts on desktop and mobile.
 - [x] Replace project photos with simple illustrations.
 - [x] Replace the resume download and preview with the newly uploaded PDF.
 - [x] Verify illustrations and downloaded PDF.
