@@ -1,10 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import { Github } from "../components/BrandIcons";
 import type { MouseEvent } from "react";
 import { useRef } from "react";
 import { PageWrap, Heading } from "../components/Section";
-import { Lazy3D } from "../components/Lazy3D";
 import mentalHealthImage from "../assets/mental-health-bot.jpg";
 import movieDiscoveryImage from "../assets/movie-discovery.jpg";
 import taskManagerImage from "../assets/task-manager.jpg";
@@ -16,10 +16,10 @@ export const Route = createFileRoute("/projects")({
       {
         name: "description",
         content:
-          "An AI mental health chatbot built with Python, NLP and CNNs, and a React movie discovery app powered by the TMDb API.",
+          "Selected work by Madhumidha S: a mental wellbeing chatbot, a React movie discovery app, and a task manager.",
       },
       { property: "og:title", content: "Projects — Madhumidha S" },
-      { property: "og:description", content: "AI mental health bot and a React movie search app." },
+      { property: "og:description", content: "A selection of web and AI project work by Madhumidha S." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -30,27 +30,27 @@ export const Route = createFileRoute("/projects")({
 const PROJECTS = [
   {
     title: "Mental Health Bot",
-    desc: "An AI-driven chatbot for real-time, empathetic text and voice conversations, with sentiment analysis, emotional-state tracking and a crisis-detection module that flags high-risk language and triggers alerts.",
+    desc: "A Python chatbot concept focused on empathetic conversations, sentiment analysis, mood tracking and crisis-language detection.",
     tags: ["Python", "NLP", "CNN"],
     href: "https://github.com/madhumidhaCse",
     image: mentalHealthImage,
-     imageAlt: "Concept image of a mental wellbeing chatbot with conversations and mood tracking on a laptop",
+    imageAlt: "Concept illustration of a friendly wellbeing chatbot with conversation bubbles and a heart",
   },
   {
     title: "Movie Search & Discovery App",
-    desc: "A React app integrating the TMDb API to search and display movie details in real time, with a Favourites feature that persists selections across sessions using React Hooks and LocalStorage.",
+    desc: "A React movie browser using the TMDb API to search films, view details and save favourites between visits.",
     tags: ["React.js", "TMDb API", "React Hooks", "LocalStorage"],
     href: "https://github.com/madhumidhaCse",
     image: movieDiscoveryImage,
-     imageAlt: "Concept image of a movie discovery app with search, film posters and favourites on a laptop",
+    imageAlt: "Concept illustration of a film reel, clapperboard and magnifying glass for movie discovery",
   },
   {
     title: "To-Do Task Manager",
-    desc: "Built during my internship at Atlanwa Pvt Ltd — a task manager covering both the front-end interface and back-end storage, with real-time task status updates and tracking.",
+    desc: "Built during my internship at Atlanwa Pvt Ltd, this task manager pairs a web interface with MySQL storage and task-status tracking.",
     tags: ["HTML", "CSS", "JavaScript", "MySQL"],
     href: "https://github.com/madhumidhaCse",
     image: taskManagerImage,
-     imageAlt: "Concept image of a task manager with task lists, checkboxes and progress tracking on a laptop",
+    imageAlt: "Concept illustration of a task checklist on a clipboard with a pencil and progress bar",
   },
 ];
 
@@ -78,25 +78,28 @@ function TiltCard({ p, i }: { p: (typeof PROJECTS)[number]; i: number }) {
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ delay: (i % 3) * 0.1, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative flex flex-col overflow-hidden rounded-3xl glass transition-[transform,box-shadow] duration-300 ease-out hover:glow"
+      className="group relative flex flex-col overflow-hidden rounded-2xl glass transition-[transform,box-shadow] duration-300 ease-out hover:glow"
     >
       <span
         aria-hidden
         className="absolute inset-x-0 -top-24 h-40 bg-gradient-to-b from-primary/25 to-transparent opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100"
       />
-      <div className="aspect-[14/9] overflow-hidden border-b border-border bg-secondary">
+      <div className="relative aspect-[14/9] overflow-hidden border-b border-border bg-secondary/70">
+        <span className="absolute left-4 top-4 z-10 rounded-full bg-card/90 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur">
+          Concept illustration
+        </span>
         <img
           src={p.image}
           alt={p.imageAlt}
           loading="lazy"
-          width={1400}
-          height={900}
-          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+          width={1408}
+          height={912}
+          className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-[1.03]"
         />
       </div>
-      <div className="flex flex-1 flex-col p-6">
-        <h2 className="font-display text-xl font-bold">{p.title}</h2>
-        <p className="mt-3 flex-1 text-sm text-muted-foreground">{p.desc}</p>
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
+        <h2 className="font-display text-xl font-bold leading-snug">{p.title}</h2>
+        <p className="mt-3 flex-1 text-sm leading-6 text-muted-foreground">{p.desc}</p>
         <ul className="mt-5 flex flex-wrap gap-2">
           {p.tags.map((t) => (
             <li key={t} className="rounded-full bg-secondary px-3 py-1 text-xs text-muted-foreground">
@@ -110,9 +113,9 @@ function TiltCard({ p, i }: { p: (typeof PROJECTS)[number]; i: number }) {
             target="_blank"
             rel="noreferrer"
             whileHover={{ x: 3 }}
-            className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-primary"
+            className="inline-flex min-h-11 items-center gap-2 font-medium text-primary"
           >
-            <Github className="size-4" /> Code
+            <Github className="size-4" /> View code <ArrowUpRight className="size-4" />
           </motion.a>
         </div>
       </div>
@@ -124,14 +127,10 @@ function Projects() {
   return (
     <PageWrap>
       <div className="relative">
-        <Lazy3D
-          variant="orbs"
-          className="pointer-events-none absolute -top-16 right-0 hidden h-64 w-1/2 opacity-70 md:block"
-        />
         <Heading
           kicker="Selected work"
           title="Projects"
-          sub="Things I've designed, built and shipped."
+          sub="A few projects spanning web development, data and thoughtful user experiences."
         />
       </div>
 
