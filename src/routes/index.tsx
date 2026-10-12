@@ -27,7 +27,7 @@ export const Route = createFileRoute("/")({
 });
 
 const ACHIEVEMENTS = [
-  { icon: Rocket, value: "2", label: "AI & React projects built end to end" },
+  { icon: Rocket, value: "3", label: "Projects across AI, web and task management" },
   { icon: Award, value: "2", label: "Certifications — NPTEL Java & MERN stack" },
   { icon: GraduationCap, value: "7.53", label: "CGPA, B.E. Computer Science (2022–2026)" },
 ];
@@ -49,7 +49,7 @@ const item = {
 function Home() {
   return (
     <PageWrap>
-      <section className="grid items-center gap-10 lg:grid-cols-[1.1fr_1fr]">
+      <section className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
         <motion.div variants={container} initial="hidden" animate="show" className="min-w-0">
           <motion.span
             variants={item}
@@ -58,7 +58,7 @@ function Home() {
             <Sparkles className="size-3.5" /> Open to entry-level developer roles
           </motion.span>
 
-          <motion.h1 variants={item} className="mt-6 text-4xl font-bold min-[400px]:text-5xl sm:text-7xl">
+          <motion.h1 variants={item} className="mt-6 max-w-3xl text-4xl font-bold leading-tight min-[400px]:text-5xl sm:text-7xl">
             Hi, I&apos;m <span className="text-gradient animate-shimmer">Madhumidha</span>
           </motion.h1>
 
@@ -66,10 +66,9 @@ function Home() {
             Full-Stack Web Developer · Chennai
           </motion.p>
 
-          <motion.p variants={item} className="mt-5 max-w-xl text-muted-foreground">
-            B.E. Computer Science and Engineering graduate with hands-on experience building
-            full-stack and AI-driven web applications using React, Python and REST APIs. Certified
-            in Java (NPTEL, IIT) and the MERN stack.
+          <motion.p variants={item} className="mt-5 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">
+            Computer Science graduate building practical web applications with React, Python and
+            REST APIs. NPTEL-certified in Java and trained in the MERN stack.
           </motion.p>
 
           <motion.div variants={item} className="mt-8 flex flex-wrap gap-3">
@@ -102,7 +101,7 @@ function Home() {
           initial={{ opacity: 0, scale: 0.88, rotate: 2 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mx-auto w-full max-w-md"
+          className="relative mx-auto w-full max-w-sm sm:max-w-md"
         >
           <motion.div
             aria-hidden
@@ -140,7 +139,7 @@ function Home() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="rounded-3xl glass p-7 text-muted-foreground"
+            className="rounded-3xl glass p-6 leading-7 text-muted-foreground sm:p-8"
           >
             <p>
               I graduated with a B.E. in Computer Science and Engineering from Velammal Engineering
