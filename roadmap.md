@@ -1,4 +1,6 @@
 # Portfolio updates
+- [ ] Redesign the portfolio into a cohesive, professional experience across its pages.
+- [ ] Verify navigation, content, and page layouts on desktop and mobile.
 - [x] Refine the home page and project descriptions for clearer first impressions.
 - [x] Refresh project illustrations while keeping them concept art, not fake screenshots.
 - [x] Improve and verify home and projects layouts on desktop and mobile.
