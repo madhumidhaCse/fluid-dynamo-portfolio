@@ -17,12 +17,12 @@ export function ParticlesBg() {
     () =>
       ({
         fullScreen: { enable: false },
-        fpsLimit: 60,
+        fpsLimit: 45,
         detectRetina: true,
         background: { color: "transparent" },
         interactivity: {
           events: {
-            onHover: { enable: true, mode: ["grab", "bubble"] },
+            onHover: { enable: true, mode: "grab" },
             resize: { enable: true },
           },
           modes: {
@@ -31,12 +31,12 @@ export function ParticlesBg() {
           },
         },
         particles: {
-          number: { value: 70, density: { enable: true, width: 1200, height: 900 } },
+          number: { value: 34, density: { enable: true, width: 1200, height: 900 } },
           color: { value: palette },
-          links: { enable: true, color: palette[0], distance: 130, opacity: 0.08, width: 1 },
-          move: { enable: true, speed: 0.7, outModes: { default: "out" } },
-          opacity: { value: { min: 0.08, max: 0.25 } },
-          size: { value: { min: 0.6, max: 2.4 } },
+          links: { enable: true, color: palette[0], distance: 130, opacity: 0.045, width: 1 },
+          move: { enable: true, speed: 0.35, outModes: { default: "out" } },
+          opacity: { value: { min: 0.04, max: 0.14 } },
+          size: { value: { min: 0.5, max: 1.7 } },
         },
       }) as const,
     [palette],
