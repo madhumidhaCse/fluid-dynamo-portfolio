@@ -9,7 +9,7 @@ import {
   Scripts,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
-import { AnimatePresence, motion, type TargetAndTransition } from "framer-motion";
+import { AnimatePresence, MotionConfig, motion } from "framer-motion";
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
@@ -132,77 +132,31 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
-const EASE = [0.22, 1, 0.36, 1] as const;
-
-const TRANSITIONS: Record<string, Record<"initial" | "animate" | "exit", TargetAndTransition>> = {
-  "/": {
-    initial: { opacity: 0, scale: 1.06, filter: "blur(14px)" },
-    animate: { opacity: 1, scale: 1, filter: "blur(0px)" },
-    exit: { opacity: 0, scale: 0.96, filter: "blur(10px)" },
-  },
-  "/hire": {
-    initial: { opacity: 0, y: 80, rotateX: 12 },
-    animate: { opacity: 1, y: 0, rotateX: 0 },
-    exit: { opacity: 0, y: -60, rotateX: -8 },
-  },
-  "/resume": {
-    initial: { opacity: 0, clipPath: "inset(0 0 100% 0)" },
-    animate: { opacity: 1, clipPath: "inset(0 0 0% 0)" },
-    exit: { opacity: 0, clipPath: "inset(100% 0 0 0)" },
-  },
-  "/projects": {
-    initial: { opacity: 0, x: 120, skewY: 3 },
-    animate: { opacity: 1, x: 0, skewY: 0 },
-    exit: { opacity: 0, x: -120, skewY: -3 },
-  },
-  "/skills": {
-    initial: { opacity: 0, scale: 0.9, rotate: -2 },
-    animate: { opacity: 1, scale: 1, rotate: 0 },
-    exit: { opacity: 0, scale: 1.08, rotate: 2 },
-  },
-  "/contact": {
-    initial: { opacity: 0, y: -70, filter: "blur(12px)" },
-    animate: { opacity: 1, y: 0, filter: "blur(0px)" },
-    exit: { opacity: 0, y: 70, filter: "blur(12px)" },
-  },
-  "/profiles": {
-    initial: { opacity: 0, scale: 0.82, y: 60 },
-    animate: { opacity: 1, scale: 1, y: 0 },
-    exit: { opacity: 0, scale: 0.9, y: -40 },
-  },
-};
-
-const DEFAULT_T = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1 },
-  exit: { opacity: 0 },
-};
-
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const t = TRANSITIONS[pathname] ?? DEFAULT_T;
 
   return (
     <QueryClientProvider client={queryClient}>
-      <GradientBlurs />
-      <ClientOnly>
-        <ParticlesBg />
-      </ClientOnly>
-      <Nav />
-      <AnimatePresence mode="wait" initial={false}>
-        <motion.div
-          key={pathname}
-          initial={t.initial}
-          animate={t.animate}
-          exit={t.exit}
-          transition={{ duration: 0.6, ease: EASE }}
-          style={{ transformPerspective: 1200 }}
-        >
-          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-          <Outlet />
-        </motion.div>
-      </AnimatePresence>
+      <MotionConfig reducedMotion="user">
+        <GradientBlurs />
+        <ClientOnly>
+          <ParticlesBg />
+        </ClientOnly>
+        <Nav />
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={pathname}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -4 }}
+            transition={{ duration: 0.22, ease: "easeOut" }}
+          >
+            {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+            <Outlet />
+          </motion.div>
+        </AnimatePresence>
+      </MotionConfig>
     </QueryClientProvider>
   );
 }
