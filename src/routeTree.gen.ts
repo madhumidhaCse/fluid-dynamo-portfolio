@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as IndexRouteImport } from './routes/index'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as HireRouteImport } from './routes/hire'
 import { Route as ProfilesRouteImport } from './routes/profiles'
@@ -16,6 +17,11 @@ import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as ResumeRouteImport } from './routes/resume'
 import { Route as SkillsRouteImport } from './routes/skills'
 
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -48,6 +54,7 @@ const SkillsRoute = SkillsRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
+  '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/hire': typeof HireRoute
   '/profiles': typeof ProfilesRoute
@@ -56,6 +63,7 @@ export interface FileRoutesByFullPath {
   '/skills': typeof SkillsRoute
 }
 export interface FileRoutesByTo {
+  '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/hire': typeof HireRoute
   '/profiles': typeof ProfilesRoute
@@ -65,6 +73,7 @@ export interface FileRoutesByTo {
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/': typeof IndexRoute
   '/contact': typeof ContactRoute
   '/hire': typeof HireRoute
   '/profiles': typeof ProfilesRoute
@@ -75,11 +84,25 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/contact' | '/hire' | '/profiles' | '/projects' | '/resume' | '/skills'
+    | '/'
+    | '/contact'
+    | '/hire'
+    | '/profiles'
+    | '/projects'
+    | '/resume'
+    | '/skills'
   fileRoutesByTo: FileRoutesByTo
-  to: '/contact' | '/hire' | '/profiles' | '/projects' | '/resume' | '/skills'
+  to:
+    | '/'
+    | '/contact'
+    | '/hire'
+    | '/profiles'
+    | '/projects'
+    | '/resume'
+    | '/skills'
   id:
     | '__root__'
+    | '/'
     | '/contact'
     | '/hire'
     | '/profiles'
@@ -89,6 +112,7 @@ export interface FileRouteTypes {
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  IndexRoute: typeof IndexRoute
   ContactRoute: typeof ContactRoute
   HireRoute: typeof HireRoute
   ProfilesRoute: typeof ProfilesRoute
@@ -99,6 +123,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -145,6 +176,7 @@ declare module '@tanstack/react-router' {
 }
 
 const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
   ContactRoute: ContactRoute,
   HireRoute: HireRoute,
   ProfilesRoute: ProfilesRoute,

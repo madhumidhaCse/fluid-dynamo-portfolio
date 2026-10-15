@@ -30,7 +30,7 @@ export function SocialLinks({ className = "" }: { className?: string }) {
             aria-label={label}
             whileHover={{ scale: 1.18, rotate: -8, y: -4 }}
             whileTap={{ scale: 0.92 }}
-            className="grid size-11 place-items-center rounded-full glass text-muted-foreground transition-colors hover:text-primary hover:glow"
+            className="grid size-11 place-items-center rounded-full border border-border bg-card text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary hover:glow"
           >
             <Icon className="size-5" />
           </motion.a>

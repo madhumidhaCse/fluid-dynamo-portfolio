@@ -2,7 +2,6 @@ import { Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { Button } from "./ui/button";
 
 export const NAV = [
   { to: "/", label: "Home" },
@@ -47,12 +46,6 @@ export function Nav() {
           ))}
         </nav>
 
-        <div className="hidden lg:block">
-          <Button asChild size="sm">
-            <Link to="/hire">Hire me</Link>
-          </Button>
-        </div>
-
         <Button
           variant="outline"
           size="icon"
@@ -93,9 +86,6 @@ export function Nav() {
                 </Link>
               </motion.div>
             ))}
-            <Button asChild className="mt-2 w-full">
-              <Link to="/hire" onClick={() => setOpen(false)}>Hire me</Link>
-            </Button>
           </motion.nav>
         )}
       </AnimatePresence>
