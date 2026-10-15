@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { Github, Linkedin } from "../components/BrandIcons";
 import { PageWrap, Heading } from "../components/Section";
 import { SocialLinks } from "../components/SocialLinks";
@@ -8,13 +8,13 @@ import { SocialLinks } from "../components/SocialLinks";
 export const Route = createFileRoute("/profiles")({
   head: () => ({
     meta: [
-      { title: "Coding Profiles — Madhumidha S" },
+      { title: "Profiles — Madhumidha S | GitHub & LinkedIn" },
       {
         name: "description",
-        content: "Find Madhumidha S on GitHub and LinkedIn, or reach out by email or phone.",
+        content: "Find Madhumidha Santhosham on GitHub and LinkedIn, or reach out by email.",
       },
       { property: "og:title", content: "Coding Profiles — Madhumidha S" },
-      { property: "og:description", content: "GitHub, LinkedIn and direct contact details." },
+      { property: "og:description", content: "GitHub, LinkedIn and email for Madhumidha Santhosham." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -31,7 +31,7 @@ const PROFILES = [
   },
   {
     name: "LinkedIn",
-    stat: "Madhumidha Santosh — experience & updates",
+    stat: "Madhumidha Santhosham — experience & updates",
     href: "https://www.linkedin.com/in/madhumidha-santhosham-7189a4279/",
     Icon: Linkedin,
   },
@@ -41,7 +41,6 @@ const PROFILES = [
     href: "mailto:madhumidhacse883@gmail.com",
     Icon: Mail,
   },
-  { name: "Phone", stat: "+91 81489 95967", href: "tel:+918148995967", Icon: Phone },
   { name: "Location", stat: "Chennai, Tamil Nadu", href: "#", Icon: MapPin },
 ];
 

@@ -1,19 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion, useInView, animate } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
 import { PageWrap, Heading } from "../components/Section";
 
 export const Route = createFileRoute("/skills")({
   head: () => ({
     meta: [
-      { title: "Skills — Madhumidha S" },
+      { title: "Skills — Madhumidha S | React, Python & MySQL" },
       {
         name: "description",
-        content:
-          "Java, Python, React.js, JavaScript, MySQL, REST APIs, DSA and the basics of NLP and CNNs.",
+        content: "Skills of Madhumidha S: React.js, JavaScript, Python, Java, REST APIs, MySQL and core computer science.",
       },
       { property: "og:title", content: "Skills — Madhumidha S" },
-      { property: "og:description", content: "React, Java, Python, MySQL, REST APIs and DSA." },
+      { property: "og:description", content: "Frontend, backend, database and core computer science skills." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -21,34 +18,14 @@ export const Route = createFileRoute("/skills")({
   component: Skills,
 });
 
-const SKILLS = [
-  { name: "React.js & React Hooks", value: 88 },
-  { name: "JavaScript (ES6+)", value: 85 },
-  { name: "HTML5 & CSS3 / Responsive Design", value: 90 },
-  { name: "Java", value: 82 },
-  { name: "Python", value: 80 },
-  { name: "SQL / MySQL", value: 78 },
-  { name: "REST API Integration", value: 82 },
-  { name: "Data Structures & Algorithms", value: 80 },
+const SKILL_GROUPS = [
+  { name: "Frontend", skills: ["React.js & Hooks", "JavaScript (ES6+)", "HTML5 & CSS3"] },
+  { name: "Backend", skills: ["Python", "Java", "REST API Integration"] },
+  { name: "Database", skills: ["SQL / MySQL", "MySQL Workbench"] },
+  { name: "Core CS", skills: ["Data Structures & Algorithms", "OOPS"] },
 ];
 
-function Counter({ to }: { to: number }) {
-  const [val, setVal] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
-
-  useEffect(() => {
-    if (!inView) return;
-    const controls = animate(0, to, {
-      duration: 1.4,
-      ease: [0.22, 1, 0.36, 1],
-      onUpdate: (v) => setVal(Math.round(v)),
-    });
-    return () => controls.stop();
-  }, [inView, to]);
-
-  return <span ref={ref}>{val}%</span>;
-}
+const FAMILIAR = ["NLP (basics)", "CNN (basics)", "MERN stack", "LocalStorage", "TMDb API", "VS Code"];
 
 function Skills() {
   return (
@@ -59,59 +36,24 @@ function Skills() {
         sub="What I build with — from interfaces and APIs down to databases."
       />
 
-      <div className="grid gap-x-10 gap-y-7 sm:grid-cols-2">
-        {SKILLS.map((s, i) => (
-          <motion.div
-            key={s.name}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ delay: (i % 4) * 0.08, duration: 0.6 }}
-            className="min-w-0"
-          >
-            <div className="mb-2 flex items-baseline justify-between gap-3">
-              <span className="truncate font-medium">{s.name}</span>
-              <span className="shrink-0 font-display text-sm text-primary">
-                <Counter to={s.value} />
-              </span>
-            </div>
-            <div className="h-2.5 overflow-hidden rounded-full bg-secondary">
-              <motion.div
-                initial={{ width: 0 }}
-                whileInView={{ width: `${s.value}%` }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 1.3, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-                className="h-full rounded-full bg-gradient-to-r from-primary to-accent"
-              />
-            </div>
-          </motion.div>
+      <div className="grid gap-8 sm:grid-cols-2">
+        {SKILL_GROUPS.map((group) => (
+          <section key={group.name} aria-labelledby={`skill-${group.name}`}>
+            <h2 id={`skill-${group.name}`} className="mb-4 font-display text-lg font-bold">{group.name}</h2>
+            <ul className="flex flex-wrap gap-2.5">
+              {group.skills.map((skill) => <li key={skill} className="rounded-full border border-primary/25 bg-primary/5 px-4 py-2 text-sm text-primary">{skill}</li>)}
+            </ul>
+          </section>
         ))}
       </div>
 
       <div className="mt-16">
         <h2 className="mb-5 font-display text-lg font-bold">Also familiar with</h2>
         <div className="flex flex-wrap gap-3">
-          {[
-            "OOPS",
-            "NLP (basics)",
-            "CNN (basics)",
-            "MERN stack",
-            "LocalStorage",
-            "TMDb API",
-            "VS Code",
-            "MySQL Workbench",
-          ].map((tag, i) => (
-            <motion.span
-              key={tag}
-              initial={{ opacity: 0, scale: 0.6 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05, type: "spring", stiffness: 300, damping: 16 }}
-              whileHover={{ scale: 1.12, rotate: -3 }}
-              className="rounded-full glass px-4 py-2 text-sm text-muted-foreground hover:text-primary"
-            >
+          {FAMILIAR.map((tag) => (
+            <span key={tag} className="rounded-full border border-primary/20 px-4 py-2 text-sm text-primary transition-colors hover:bg-primary/5">
               {tag}
-            </motion.span>
+            </span>
           ))}
         </div>
       </div>

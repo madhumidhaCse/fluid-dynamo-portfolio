@@ -1,25 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
-import { Github } from "../components/BrandIcons";
-import type { MouseEvent } from "react";
-import { useRef } from "react";
+import { ArrowUpRight, ImagePlus } from "lucide-react";
 import { PageWrap, Heading } from "../components/Section";
-import mentalHealthImage from "../assets/mental-health-bot.jpg";
-import movieDiscoveryImage from "../assets/movie-discovery.jpg";
-import taskManagerImage from "../assets/task-manager.jpg";
+import { Button } from "../components/ui/button";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
     meta: [
-      { title: "Projects — Madhumidha S" },
-      {
-        name: "description",
-        content:
-          "Selected work by Madhumidha S: a mental wellbeing chatbot, a React movie discovery app, and a task manager.",
-      },
-      { property: "og:title", content: "Projects — Madhumidha S" },
-      { property: "og:description", content: "A selection of web and AI project work by Madhumidha S." },
+      { title: "Projects — Madhumidha S | React & Python" },
+      { name: "description", content: "Explore React, Python and MySQL projects by Madhumidha S." },
+      { property: "og:title", content: "Projects — Madhumidha S | React & Python" },
+      { property: "og:description", content: "Mental Health Bot, Movie Search & Discovery App, and To-Do Task Manager." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -30,113 +21,56 @@ export const Route = createFileRoute("/projects")({
 const PROJECTS = [
   {
     title: "Mental Health Bot",
-    desc: "A Python chatbot concept focused on empathetic conversations, sentiment analysis, mood tracking and crisis-language detection.",
+    description: "A Python chatbot project exploring supportive conversations, sentiment analysis and mood tracking.",
     tags: ["Python", "NLP", "CNN"],
-    href: "https://github.com/madhumidhaCse",
-    image: mentalHealthImage,
-    imageAlt: "Concept illustration of a friendly wellbeing chatbot with conversation bubbles and a heart",
   },
   {
     title: "Movie Search & Discovery App",
-    desc: "A React movie browser using the TMDb API to search films, view details and save favourites between visits.",
+    description: "A React movie browser to search films, view details and save favourites between visits.",
     tags: ["React.js", "TMDb API", "React Hooks", "LocalStorage"],
-    href: "https://github.com/madhumidhaCse",
-    image: movieDiscoveryImage,
-    imageAlt: "Concept illustration of a film reel, clapperboard and magnifying glass for movie discovery",
   },
   {
     title: "To-Do Task Manager",
-    desc: "Built during my internship at Atlanwa Pvt Ltd, this task manager pairs a web interface with MySQL storage and task-status tracking.",
+    description: "An internship project pairing a task interface with MySQL storage and task-status tracking.",
     tags: ["HTML", "CSS", "JavaScript", "MySQL"],
-    href: "https://github.com/madhumidhaCse",
-    image: taskManagerImage,
-    imageAlt: "Concept illustration of a task checklist on a clipboard with a pencil and progress bar",
   },
 ];
-
-function TiltCard({ p, i }: { p: (typeof PROJECTS)[number]; i: number }) {
-  const ref = useRef<HTMLElement>(null);
-
-  const onMove = (e: MouseEvent<HTMLElement>) => {
-    const el = ref.current;
-    if (!el) return;
-    const r = el.getBoundingClientRect();
-    const px = (e.clientX - r.left) / r.width - 0.5;
-    const py = (e.clientY - r.top) / r.height - 0.5;
-    el.style.transform = `perspective(900px) rotateY(${px * 14}deg) rotateX(${-py * 14}deg) translateZ(18px)`;
-  };
-  const onLeave = () => {
-    if (ref.current) ref.current.style.transform = "";
-  };
-
-  return (
-    <motion.article
-      ref={ref}
-      onMouseMove={onMove}
-      onMouseLeave={onLeave}
-      initial={{ opacity: 0, y: 50, scale: 0.94 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ delay: (i % 3) * 0.1, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative flex flex-col overflow-hidden rounded-2xl glass transition-[transform,box-shadow] duration-300 ease-out hover:glow"
-    >
-      <span
-        aria-hidden
-        className="absolute inset-x-0 -top-24 h-40 bg-gradient-to-b from-primary/25 to-transparent opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100"
-      />
-      <div className="relative aspect-[14/9] overflow-hidden border-b border-border bg-secondary/70">
-        <span className="absolute left-4 top-4 z-10 rounded-full bg-card/90 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur">
-          Concept illustration
-        </span>
-        <img
-          src={p.image}
-          alt={p.imageAlt}
-          loading="lazy"
-          width={1408}
-          height={912}
-          className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-[1.03]"
-        />
-      </div>
-      <div className="flex flex-1 flex-col p-5 sm:p-6">
-        <h2 className="font-display text-xl font-bold leading-snug">{p.title}</h2>
-        <p className="mt-3 flex-1 text-sm leading-6 text-muted-foreground">{p.desc}</p>
-        <ul className="mt-5 flex flex-wrap gap-2">
-          {p.tags.map((t) => (
-            <li key={t} className="rounded-full bg-secondary px-3 py-1 text-xs text-muted-foreground">
-              {t}
-            </li>
-          ))}
-        </ul>
-        <div className="mt-6 flex gap-4 text-sm">
-          <motion.a
-            href={p.href}
-            target="_blank"
-            rel="noreferrer"
-            whileHover={{ x: 3 }}
-            className="inline-flex min-h-11 items-center gap-2 font-medium text-primary"
-          >
-            <Github className="size-4" /> View code <ArrowUpRight className="size-4" />
-          </motion.a>
-        </div>
-      </div>
-    </motion.article>
-  );
-}
 
 function Projects() {
   return (
     <PageWrap>
-      <div className="relative">
-        <Heading
-          kicker="Selected work"
-          title="Projects"
-          sub="A few projects spanning web development, data and thoughtful user experiences."
-        />
-      </div>
-
+      <Heading kicker="Selected work" title="Projects" sub="A selection of web and application projects." />
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {PROJECTS.map((p, i) => (
-          <TiltCard key={p.title} p={p} i={i} />
+        {PROJECTS.map((project, index) => (
+          <motion.article
+            key={project.title}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ delay: index * 0.08, duration: 0.35 }}
+            whileHover={{ y: -4 }}
+            className="flex min-w-0 flex-col overflow-hidden rounded-lg border border-border bg-card transition-shadow hover:shadow-glow"
+          >
+            <div className="grid aspect-[14/9] place-items-center border-b border-dashed border-border bg-secondary/60 text-muted-foreground" role="img" aria-label={`${project.title} screenshot placeholder`}>
+              <div className="flex flex-col items-center gap-2 text-center">
+                <ImagePlus className="size-8 text-primary/70" aria-hidden="true" />
+                <span className="text-sm">Project screenshot</span>
+              </div>
+            </div>
+            <div className="flex flex-1 flex-col p-5 sm:p-6">
+              <h2 className="font-display text-xl font-bold leading-snug">{project.title}</h2>
+              <p className="mt-3 flex-1 text-sm leading-6 text-muted-foreground">{project.description}</p>
+              <ul className="mt-5 flex flex-wrap gap-2">
+                {project.tags.map((tag) => <li key={tag} className="rounded-full bg-secondary px-3 py-1 text-xs text-muted-foreground">{tag}</li>)}
+              </ul>
+              <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
+                <Button asChild variant="link" className="h-11 justify-start px-0 text-primary">
+                  <a href="https://github.com/madhumidhaCse" target="_blank" rel="noreferrer">View code <ArrowUpRight className="size-4" /></a>
+                </Button>
+                <Button variant="outline" size="sm" disabled title="No live demo link is available yet">Live Demo</Button>
+              </div>
+            </div>
+          </motion.article>
         ))}
       </div>
     </PageWrap>
