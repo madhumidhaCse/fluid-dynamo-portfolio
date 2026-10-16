@@ -1,10 +1,10 @@
 // ============= Full file contents =============
 
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { PageWrap, Heading } from "../components/Section";
 import { SocialLinks } from "../components/SocialLinks";
+import { Button } from "../components/ui/button";
 
 const EMAIL = "madhumidhacse883@gmail.com";
 const PHONE = "+91 81489 95967";
@@ -41,43 +41,17 @@ function Contact() {
         sub="Reach me directly — email, phone or social. I usually reply within a day."
       />
 
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {CONTACTS.map(({ label, value, href, Icon }, i) => {
-          const Tag = (href ? "a" : "div") as "a";
-          return (
-            <motion.div
-              key={label}
-              initial={{ opacity: 0, y: 40, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ delay: i * 0.09, type: "spring", stiffness: 240, damping: 18 }}
-            >
-              <motion.div
-                whileHover={{ y: -8, scale: 1.04 }}
-                whileTap={{ scale: 0.97 }}
-                className="group relative overflow-hidden rounded-3xl glass p-7 hover:glow-strong"
-              >
-                <span
-                  aria-hidden
-                  className="absolute -right-10 -top-10 size-32 rounded-full bg-accent/25 blur-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                />
-                <Tag
-                  {...(href ? { href } : {})}
-                  {...(href?.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}
-                  className="block"
-                >
-                  <motion.span
-                    whileHover={{ rotate: 12 }}
-                    className="grid size-12 place-items-center rounded-2xl bg-primary/15 text-primary"
-                  >
-                    <Icon className="size-6" />
-                  </motion.span>
-                  <h2 className="mt-5 font-display text-xl font-bold">{label}</h2>
-                  <p className="mt-1 break-words text-sm text-muted-foreground">{value}</p>
-                </Tag>
-              </motion.div>
-            </motion.div>
-          );
-        })}
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {CONTACTS.map(({ label, value, href, Icon }) => (
+          <article key={label} className="border-t border-border py-5">
+            <span className="grid size-11 place-items-center rounded-md bg-secondary text-primary"><Icon className="size-5" /></span>
+            <h2 className="mt-4 font-display text-lg font-bold">{label}</h2>
+            <p className="mt-1 break-words text-sm text-muted-foreground">{value}</p>
+            {href && <Button asChild variant="link" className="mt-2 h-auto justify-start px-0">
+              <a href={href}>{label === "Email" ? "Write an email" : "Call me"}</a>
+            </Button>}
+          </article>
+        ))}
       </div>
 
       <div className="mt-16">

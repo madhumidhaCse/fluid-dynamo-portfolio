@@ -1,8 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ArrowUpRight, ImagePlus } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { PageWrap, Heading } from "../components/Section";
 import { Button } from "../components/ui/button";
+import mentalHealthImage from "../assets/mental-health-bot.jpg";
+import movieDiscoveryImage from "../assets/movie-discovery.jpg";
+import taskManagerImage from "../assets/task-manager.jpg";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
@@ -23,16 +26,22 @@ const PROJECTS = [
     title: "Mental Health Bot",
     description: "A Python chatbot project exploring supportive conversations, sentiment analysis and mood tracking.",
     tags: ["Python", "NLP", "CNN"],
+    image: mentalHealthImage,
+    imageAlt: "Concept illustration for the Mental Health Bot, not an app screenshot",
   },
   {
     title: "Movie Search & Discovery App",
     description: "A React movie browser to search films, view details and save favourites between visits.",
     tags: ["React.js", "TMDb API", "React Hooks", "LocalStorage"],
+    image: movieDiscoveryImage,
+    imageAlt: "Concept illustration for the Movie Search and Discovery App, not an app screenshot",
   },
   {
     title: "To-Do Task Manager",
     description: "An internship project pairing a task interface with MySQL storage and task-status tracking.",
     tags: ["HTML", "CSS", "JavaScript", "MySQL"],
+    image: taskManagerImage,
+    imageAlt: "Concept illustration for the To-Do Task Manager, not an app screenshot",
   },
 ];
 
@@ -51,11 +60,9 @@ function Projects() {
             whileHover={{ y: -4 }}
             className="flex min-w-0 flex-col overflow-hidden rounded-lg border border-border bg-card transition-shadow hover:shadow-glow"
           >
-            <div className="grid aspect-[14/9] place-items-center border-b border-dashed border-border bg-secondary/60 text-muted-foreground" role="img" aria-label={`${project.title} screenshot placeholder`}>
-              <div className="flex flex-col items-center gap-2 text-center">
-                <ImagePlus className="size-8 text-primary/70" aria-hidden="true" />
-                <span className="text-sm">Project screenshot</span>
-              </div>
+            <div className="relative grid aspect-[14/9] place-items-center overflow-hidden border-b border-border bg-secondary/60">
+              <img src={project.image} alt={project.imageAlt} width={1408} height={912} loading="lazy" className="h-full w-full object-contain" />
+              <span className="absolute bottom-3 left-3 rounded-sm border border-border bg-background/95 px-2.5 py-1 text-xs font-medium text-muted-foreground">Concept illustration</span>
             </div>
             <div className="flex flex-1 flex-col p-5 sm:p-6">
               <h2 className="font-display text-xl font-bold leading-snug">{project.title}</h2>
@@ -65,7 +72,7 @@ function Projects() {
               </ul>
               <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
                 <Button asChild variant="link" className="h-11 justify-start px-0 text-primary">
-                  <a href="https://github.com/madhumidhaCse" target="_blank" rel="noreferrer">View code <ArrowUpRight className="size-4" /></a>
+                  <a href="https://github.com/madhumidhaCse" target="_blank" rel="noreferrer">GitHub profile <ArrowUpRight className="size-4" /></a>
                 </Button>
                 <Button variant="outline" size="sm" disabled title="No live demo link is available yet">Live Demo</Button>
               </div>

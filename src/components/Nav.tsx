@@ -47,6 +47,10 @@ export function Nav() {
           ))}
         </nav>
 
+        <Button asChild size="sm" className="hidden lg:inline-flex">
+          <Link to="/hire">Hire me</Link>
+        </Button>
+
         <Button
           variant="outline"
           size="icon"
@@ -87,6 +91,9 @@ export function Nav() {
                 </Link>
               </motion.div>
             ))}
+            <Button asChild className="mt-2 w-full">
+              <Link to="/hire" onClick={() => setOpen(false)}>Hire me</Link>
+            </Button>
           </motion.nav>
         )}
       </AnimatePresence>

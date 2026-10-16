@@ -99,7 +99,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -156,6 +155,17 @@ function RootComponent() {
             <Outlet />
           </motion.div>
         </AnimatePresence>
+        <footer className="border-t border-border bg-background">
+          <div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-7 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-8">
+            <Link to="/" className="font-display font-bold text-foreground">Madhumidha S.</Link>
+            <nav aria-label="Footer navigation" className="flex flex-wrap gap-x-5 gap-y-2">
+              <Link to="/projects" className="hover:text-primary">Projects</Link>
+              <Link to="/resume" className="hover:text-primary">Résumé</Link>
+              <Link to="/contact" className="hover:text-primary">Contact</Link>
+            </nav>
+            <a href="mailto:madhumidhacse883@gmail.com" className="hover:text-primary">madhumidhacse883@gmail.com</a>
+          </div>
+        </footer>
       </MotionConfig>
     </QueryClientProvider>
   );
