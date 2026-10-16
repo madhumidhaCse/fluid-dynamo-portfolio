@@ -1,6 +1,6 @@
 # Portfolio updates
-- [ ] Apply the uploaded portfolio brief across Home, Projects, Skills, Profiles, shared navigation, SEO, and footer.
-- [ ] Verify navigation, content, and mobile/desktop layouts; check the current build result.
+- [x] Apply the approved professional refresh across Home, Projects, Skills, Profiles, shared navigation, SEO, and footer.
+- [x] Verify page content, navigation, image loading, mobile/desktop layouts, runtime errors, and build result.
 - [x] Refine the home page and project descriptions for clearer first impressions.
 - [x] Refresh project illustrations while keeping them concept art, not fake screenshots.
 - [x] Improve and verify home and projects layouts on desktop and mobile.

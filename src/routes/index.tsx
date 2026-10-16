@@ -64,8 +64,16 @@ const SKILL_GROUPS = [
 ];
 
 const EXPERIENCE = [
-  { title: "Web Development Intern", company: "Atlanwa Pvt Ltd" },
-  { title: "In-plant Training", company: "Codebind Technologies" },
+  {
+    title: "Web Development Intern",
+    company: "Atlanwa Pvt Ltd",
+    detail: "Developed a To-Do task manager using HTML, CSS, JavaScript and MySQL, with task-status tracking.",
+  },
+  {
+    title: "In-plant Trainee",
+    company: "Codebind Technologies",
+    detail: "Project-based training in HTML, CSS and JavaScript fundamentals.",
+  },
 ];
 
 function Home() {
@@ -143,10 +151,7 @@ function Home() {
           {EXPERIENCE.map((entry) => <article key={entry.company} className="border-l-2 border-primary pl-5">
             <h3 className="font-display text-lg font-bold">{entry.title}</h3>
             <p className="mt-1 text-sm font-medium text-primary">{entry.company}</p>
-            <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-muted-foreground">
-              <li>[Add a brief description of what you built.]</li>
-              <li>[Add the tools and technologies you used.]</li>
-            </ul>
+            <p className="mt-3 max-w-xl text-sm leading-6 text-muted-foreground">{entry.detail}</p>
           </article>)}
         </div>
       </section>

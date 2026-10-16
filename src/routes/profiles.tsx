@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
 import { Mail, MapPin } from "lucide-react";
 import { Github, Linkedin } from "../components/BrandIcons";
 import { PageWrap, Heading } from "../components/Section";
@@ -55,32 +54,15 @@ function Profiles() {
 
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {PROFILES.map(({ name, stat, href, Icon }, i) => (
-          <motion.a
-            key={name}
-            href={href}
-            target={href.startsWith("http") ? "_blank" : undefined}
-            rel="noreferrer"
-            initial={{ opacity: 0, scale: 0.7, y: 40 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ delay: i * 0.09, type: "spring", stiffness: 240, damping: 18 }}
-            whileHover={{ y: -8, scale: 1.04 }}
-            whileTap={{ scale: 0.97 }}
-            className="group relative overflow-hidden rounded-3xl glass p-7 hover:glow-strong"
-          >
-            <span
-              aria-hidden
-              className="absolute -right-10 -top-10 size-32 rounded-full bg-accent/25 blur-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-            />
-            <motion.span
-              whileHover={{ rotate: 12 }}
-              className="grid size-12 place-items-center rounded-2xl bg-primary/15 text-primary"
-            >
+          <article key={name} className="min-w-0 border-t border-border py-5">
+            <span className="grid size-11 place-items-center rounded-md bg-secondary text-primary">
               <Icon className="size-6" />
-            </motion.span>
-            <h2 className="mt-5 font-display text-xl font-bold">{name}</h2>
-            <p className="mt-1 text-sm text-muted-foreground">{stat}</p>
-          </motion.a>
+            </span>
+            <h2 className="mt-4 font-display text-lg font-bold">{name}</h2>
+            {href !== "#" ? (
+              <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" className="mt-1 inline-block break-words text-sm text-muted-foreground underline-offset-4 hover:text-primary hover:underline">{stat}</a>
+            ) : <p className="mt-1 text-sm text-muted-foreground">{stat}</p>}
+          </article>
         ))}
       </div>
 
